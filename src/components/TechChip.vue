@@ -1,3 +1,14 @@
+<template>
+  <span
+    class="chip"
+    :class="size === 'lg' ? 'chip-lg' : ''"
+    :style="{ color: colors.fg, background: colors.bg }"
+  >
+    <TechIcon :tech-key="techKey" :size="size === 'lg' ? 20 : 15" />
+    {{ label }}
+  </span>
+</template>
+
 <script setup>
 import TechIcon from "./TechIcon.vue";
 import { techColors } from "../data/techColors";
@@ -10,17 +21,6 @@ const props = defineProps({
 
 const colors = techColors[props.techKey] || techColors.ts;
 </script>
-
-<template>
-  <span
-    class="chip"
-    :class="size === 'lg' ? 'chip-lg' : ''"
-    :style="{ color: colors.fg, background: colors.bg }"
-  >
-    <TechIcon :tech-key="techKey" :size="size === 'lg' ? 20 : 15" />
-    {{ label }}
-  </span>
-</template>
 
 <style scoped>
 .chip-lg {

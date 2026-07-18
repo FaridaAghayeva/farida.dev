@@ -1,33 +1,6 @@
-<script setup>
-import { ref, watch } from "vue";
-import { useRoute } from "vue-router";
-
-const links = [
-  { to: "/", crumb: "~/home" },
-  { to: "/about", crumb: "~/about" },
-  { to: "/experience", crumb: "~/experience" },
-  { to: "/education", crumb: "~/education" },
-  { to: "/projects", crumb: "~/projects" },
-  { to: "/awards", crumb: "~/awards" },
-  { to: "/scholarships", crumb: "~/scholarships" },
-  { to: "/socials", crumb: "~/socials" },
-  { to: "/contact", crumb: "~/contact" },
-];
-
-const route = useRoute();
-const open = ref(false);
-
-watch(
-  () => route.fullPath,
-  () => {
-    open.value = false;
-  }
-);
-</script>
-
 <template>
   <header class="header">
-    <div class="header-inner container">
+    <div class="header-inner">
       <router-link to="/" class="logo" aria-label="Farida Aghayeva — home">
         <span class="logo-mark">FA</span>
         <span class="logo-text">farida<span class="dim">.dev</span></span>
@@ -74,16 +47,42 @@ watch(
   </header>
 </template>
 
+<script setup>
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
+
+const links = [
+  { to: "/", crumb: "~/home" },
+  { to: "/about", crumb: "~/about" },
+  { to: "/experience", crumb: "~/experience" },
+  { to: "/education", crumb: "~/education" },
+  { to: "/projects", crumb: "~/projects" },
+  { to: "/awards", crumb: "~/awards" },
+  { to: "/scholarships", crumb: "~/scholarships" },
+  { to: "/socials", crumb: "~/socials" },
+  { to: "/contact", crumb: "~/contact" },
+];
+
+const route = useRoute();
+const open = ref(false);
+
+watch(
+  () => route.fullPath,
+  () => {
+    open.value = false;
+  },
+);
+</script>
+
 <style scoped>
 .header {
   position: fixed;
-  inset: 0 0 auto 0;
+  inset: 0 0 auto;
   height: var(--header-h);
   z-index: 100;
   background: rgba(247, 246, 252, 0.78);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
+  width: 100%;
 }
 
 .header-inner {
@@ -92,8 +91,9 @@ watch(
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  width: min(100%, var(--container));
+  margin: 0 auto;
 }
-
 .logo {
   display: flex;
   align-items: center;
@@ -151,7 +151,10 @@ watch(
   padding: 8px 13px;
   border-radius: var(--radius-s) var(--radius-s) 0 0;
   border-bottom: 2px solid transparent;
-  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
   white-space: nowrap;
 }
 
@@ -197,7 +200,9 @@ watch(
   height: 2px;
   background: var(--ink);
   border-radius: 2px;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .burger-open span:nth-child(1) {

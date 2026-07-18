@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from "vue";
-import { profile, featuredStack } from "../data/resume";
+import profile from "../assets/profile.jpg";
 import TechChip from "../components/TechChip.vue";
+import { featuredStack } from "../data/resume.js";
 
 const imgFailed = ref(false);
 </script>
@@ -43,7 +44,7 @@ const imgFailed = ref(false);
           <div class="photo-wrap">
             <img
               v-if="!imgFailed"
-              src="/profile.jpg"
+              :src="profile"
               alt="Portrait of Farida Aghayeva"
               @error="imgFailed = true"
             />
