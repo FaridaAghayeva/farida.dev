@@ -1,0 +1,266 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   A soft, "pastel IDE" language — a developer's world (editor tabs, file
+   paths, syntax-color chips) rendered in gentle, low-contrast colour so it
+   never feels like a terminal, just borrows its vernacular.
+   ========================================================================== */
+:root {
+  /* base */
+  --bg: #f7f6fc;
+  --bg-alt: #ffffff;
+  --surface: #ffffff;
+  --ink: #29283b;
+  --muted: #6b6880;
+  --muted-2: #9c99ad;
+  --line: rgba(41, 40, 59, 0.09);
+  --line-strong: rgba(41, 40, 59, 0.16);
+
+  /* brand / signature accent */
+  --primary: #7c6ff2;
+  --primary-ink: #5a4dd6;
+  --primary-soft: #ece9fd;
+  --pink: #f2a7c9;
+  --pink-soft: #fdebf3;
+  --blue: #6fb3f2;
+  --blue-soft: #e8f3fe;
+
+  /* tech-brand accents (used as "syntax colour" for the stack) */
+  --vue: #3aa876;
+  --vue-soft: #dff3ea;
+  --react: #2f9fce;
+  --react-soft: #e1f4fb;
+  --laravel: #ef5a63;
+  --laravel-soft: #fde5e6;
+  --node: #4f9d64;
+  --node-soft: #e6f4e8;
+  --mongo: #3fa66e;
+  --mongo-soft: #e2f4e9;
+  --ts: #3d6fd1;
+  --ts-soft: #e3ecfc;
+
+  /* type */
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* layout */
+  --radius-s: 10px;
+  --radius-m: 18px;
+  --radius-l: 28px;
+  --container: 1180px;
+  --header-h: 76px;
+  --shadow-soft: 0 20px 60px -25px rgba(60, 55, 110, 0.25);
+  --shadow-card: 0 10px 30px -12px rgba(60, 55, 110, 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  /* Intentionally not auto-switching to dark — the brief calls for a soft,
+     light palette. Kept as a documented decision, not an oversight. */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   LAYOUT UTILITIES
+   ========================================================================== */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 40px);
+}
+
+.page {
+  padding-top: calc(var(--header-h) + 56px);
+  padding-bottom: 100px;
+  min-height: 100vh;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--primary-ink);
+  background: var(--primary-soft);
+  border-radius: 999px;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 14px;
+}
+
+.section-lede {
+  color: var(--muted);
+  font-size: 17px;
+  max-width: 620px;
+  margin-bottom: 48px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  box-shadow: var(--shadow-card);
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 26px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 14px 30px -12px rgba(124, 111, 242, 0.55);
+}
+
+.btn-primary:hover {
+  background: var(--primary-ink);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--ink);
+}
+
+.btn-ghost:hover {
+  border-color: var(--primary);
+  color: var(--primary-ink);
+}
+
+/* tech chip — the reusable "syntax colour" tag used everywhere the stack
+   needs to be visible at a glance */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* file-path style breadcrumb, echoes the header nav language */
+.path {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted-2);
+}
+
+.grid {
+  display: grid;
+  gap: 28px;
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding-top: calc(var(--header-h) + 34px);
+  }
+}
