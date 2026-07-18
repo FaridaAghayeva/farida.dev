@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Farida Aghayeva — Portfolio
 
 A multi-page Vue 3 portfolio site (Vite + Vue Router), built from the resume content. Soft-pastel
