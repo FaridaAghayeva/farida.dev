@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Farida Aghayeva — Portfolio
 
 A multi-page Vue 3 portfolio site (Vite + Vue Router), built from the resume content. Soft-pastel
@@ -73,3 +74,4 @@ This is a static Vite build, so it deploys anywhere static hosting is supported:
 
 Vue 3, Vue Router 4, Vite. No UI framework — all styling is hand-written CSS using a small set of
 design tokens in `src/assets/main.css`.
+
