@@ -69,7 +69,7 @@ const imgFailed = ref(false);
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 56px;
-  align-items: center;
+  align-items: start;
   min-height: calc(100vh - var(--header-h) - 140px);
 }
 
@@ -117,9 +117,10 @@ const imgFailed = ref(false);
 .hero-visual {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 40px;
+  padding: 0 40px 40px;
+  margin-top: 56px;
 }
 
 .browser-frame {
@@ -131,6 +132,7 @@ const imgFailed = ref(false);
   box-shadow: var(--shadow-soft);
   position: relative;
   z-index: 2;
+  margin-top: 0;
 }
 
 .browser-bar {
