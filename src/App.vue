@@ -1,25 +1,31 @@
+<template>
+  <div class="app-shell">
+    <div class="bg-mesh" aria-hidden="true"></div>
+    <AppHeader />
+    <div class="route-frame">
+      <router-view v-slot="{ Component, route }">
+        <transition name="page" mode="out-in">
+          <component :is="Component" :key="route.path" />
+        </transition>
+      </router-view>
+    </div>
+    <AppFooter />
+  </div>
+</template>
+
 <script setup>
 import AppHeader from "./components/AppHeader.vue";
 import AppFooter from "./components/AppFooter.vue";
 </script>
 
-<template>
-  <div class="app-shell">
-    <div class="bg-mesh" aria-hidden="true"></div>
-    <AppHeader />
-    <router-view v-slot="{ Component, route }">
-      <transition name="page" mode="out-in">
-        <component :is="Component" :key="route.path" />
-      </transition>
-    </router-view>
-    <AppFooter />
-  </div>
-</template>
-
-<style scoped>
+<style scoped lang="scss">
 .app-shell {
   position: relative;
   min-height: 100vh;
+}
+
+.route-frame {
+  padding-top: clamp(28px, 5vw, 52px);
 }
 
 .bg-mesh {

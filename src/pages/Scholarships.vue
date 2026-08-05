@@ -1,10 +1,3 @@
-<script setup>
-import { computed } from "vue";
-import { awards } from "../data/resume";
-
-const list = computed(() => awards.filter((a) => a.type === "scholarship"));
-</script>
-
 <template>
   <div class="page container">
     <span class="eyebrow">~/scholarships</span>
@@ -25,7 +18,14 @@ const list = computed(() => awards.filter((a) => a.type === "scholarship"));
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { computed } from "vue";
+import { awards } from "../data/resume";
+
+const list = computed(() => awards.filter((a) => a.type === "scholarship"));
+</script>
+
+<style scoped lang="scss">
 .schol-grid {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }

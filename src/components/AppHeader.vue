@@ -56,9 +56,7 @@ const links = [
   { to: "/about", crumb: "~/about" },
   { to: "/experience", crumb: "~/experience" },
   { to: "/education", crumb: "~/education" },
-  { to: "/projects", crumb: "~/projects" },
   { to: "/awards", crumb: "~/awards" },
-  { to: "/scholarships", crumb: "~/scholarships" },
   { to: "/socials", crumb: "~/socials" },
   { to: "/contact", crumb: "~/contact" },
 ];
@@ -74,13 +72,14 @@ watch(
 );
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .header {
-  position: fixed;
-  inset: 0 0 auto;
+  position: sticky;
+  top: 0;
   height: var(--header-h);
   z-index: 100;
-  background: rgba(247, 246, 252, 0.78);
+  background: rgba(247, 246, 252, 0.82);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   width: 100%;
 }
@@ -93,6 +92,7 @@ watch(
   gap: 24px;
   width: min(100%, var(--container));
   margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 24px);
 }
 .logo {
   display: flex;
@@ -127,7 +127,6 @@ watch(
   font-weight: 500;
 }
 
-/* editor-tab style nav: the signature element */
 .tabs {
   display: flex;
   align-items: center;
@@ -223,17 +222,20 @@ watch(
   .tabs {
     display: none;
   }
+
   .burger {
     display: flex;
   }
+
   .mobile-panel {
     display: flex;
     flex-direction: column;
     background: var(--bg-alt);
     border-bottom: 1px solid var(--line);
-    padding: 10px clamp(20px, 5vw, 40px) 18px;
+    padding: 10px clamp(16px, 4vw, 28px) 18px;
     gap: 2px;
   }
+
   .mobile-link {
     display: flex;
     align-items: center;
@@ -244,15 +246,46 @@ watch(
     padding: 12px 10px;
     border-radius: var(--radius-s);
   }
+
   .mobile-link-active {
     color: var(--primary-ink);
     background: var(--primary-soft);
   }
+
   .mobile-link-active .tab-dot {
     background: var(--primary);
   }
 }
 
+@media (max-width: 640px) {
+  .header {
+    height: auto;
+  }
+
+  .header-inner {
+    min-height: var(--header-h);
+    gap: 14px;
+  }
+
+  .logo-mark {
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .logo-text {
+    font-size: 18px;
+  }
+
+  .burger {
+    width: 42px;
+    height: 42px;
+  }
+
+  .mobile-panel {
+    padding: 8px 16px 16px;
+  }
+}
 .drop-enter-active,
 .drop-leave-active {
   transition: all 0.2s ease;

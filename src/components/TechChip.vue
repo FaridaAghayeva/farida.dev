@@ -16,13 +16,13 @@ import { techColors } from "../data/techColors";
 const props = defineProps({
   techKey: { type: String, required: true },
   label: { type: String, required: true },
-  size: { type: String, default: "md" }, // md | lg
+  size: { type: String, default: "md" },
 });
 
 const colors = techColors[props.techKey] || techColors.ts;
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .chip-lg {
   font-size: 15px;
   padding: 11px 20px;

@@ -1,11 +1,4 @@
-/* ==========================================================================
-   DESIGN TOKENS
-   A soft, "pastel IDE" language — a developer's world (editor tabs, file
-   paths, syntax-color chips) rendered in gentle, low-contrast colour so it
-   never feels like a terminal, just borrows its vernacular.
-   ========================================================================== */
 :root {
-  /* base */
   --bg: #f7f6fc;
   --bg-alt: #ffffff;
   --surface: #ffffff;
@@ -15,7 +8,6 @@
   --line: rgba(41, 40, 59, 0.09);
   --line-strong: rgba(41, 40, 59, 0.16);
 
-  /* brand / signature accent */
   --primary: #7c6ff2;
   --primary-ink: #5a4dd6;
   --primary-soft: #ece9fd;
@@ -24,7 +16,6 @@
   --blue: #6fb3f2;
   --blue-soft: #e8f3fe;
 
-  /* tech-brand accents (used as "syntax colour" for the stack) */
   --vue: #3aa876;
   --vue-soft: #dff3ea;
   --react: #2f9fce;
@@ -38,12 +29,10 @@
   --ts: #3d6fd1;
   --ts-soft: #e3ecfc;
 
-  /* type */
   --font-display: "Space Grotesk", "Inter", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  /* layout */
   --radius-s: 10px;
   --radius-m: 18px;
   --radius-l: 28px;
@@ -51,11 +40,6 @@
   --header-h: 76px;
   --shadow-soft: 0 20px 60px -25px rgba(60, 55, 110, 0.25);
   --shadow-card: 0 10px 30px -12px rgba(60, 55, 110, 0.18);
-}
-
-@media (prefers-color-scheme: dark) {
-  /* Intentionally not auto-switching to dark — the brief calls for a soft,
-     light palette. Kept as a documented decision, not an oversight. */
 }
 
 * {
@@ -139,9 +123,6 @@ button {
   border-radius: 4px;
 }
 
-/* ==========================================================================
-   LAYOUT UTILITIES
-   ========================================================================== */
 .container {
   max-width: var(--container);
   margin: 0 auto;
@@ -149,7 +130,6 @@ button {
 }
 
 .page {
-  padding-top: calc(var(--header-h) + 56px);
   padding-bottom: 100px;
   min-height: 100vh;
 }
@@ -194,7 +174,6 @@ button {
   box-shadow: var(--shadow-card);
 }
 
-/* buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -233,8 +212,6 @@ button {
   color: var(--primary-ink);
 }
 
-/* tech chip — the reusable "syntax colour" tag used everywhere the stack
-   needs to be visible at a glance */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -254,7 +231,6 @@ button {
   flex-shrink: 0;
 }
 
-/* file-path style breadcrumb, echoes the header nav language */
 .path {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -268,6 +244,30 @@ button {
 
 @media (max-width: 720px) {
   .page {
-    padding-top: calc(var(--header-h) + 34px);
+    padding-top: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+  }
+
+  .section-lede {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .chip {
+    font-size: 12.5px;
   }
 }

@@ -1,7 +1,3 @@
-<script setup>
-import { socials } from "../data/resume";
-</script>
-
 <template>
   <div class="page container">
     <span class="eyebrow">~/socials</span>
@@ -18,7 +14,11 @@ import { socials } from "../data/resume";
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { socials } from "../data/resume";
+</script>
+
+<style scoped lang="scss">
 .social-grid {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
@@ -32,6 +32,15 @@ import { socials } from "../data/resume";
   transition: transform 0.18s ease, border-color 0.18s ease;
 }
 
+@media (max-width: 640px) {
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-card {
+    padding: 22px;
+  }
+}
 .social-card:hover {
   transform: translateY(-4px);
   border-color: var(--primary);

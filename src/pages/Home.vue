@@ -1,12 +1,3 @@
-<script setup>
-import { ref } from "vue";
-import profile from "../assets/profile.jpg";
-import TechChip from "../components/TechChip.vue";
-import { featuredStack } from "../data/resume.js";
-
-const imgFailed = ref(false);
-</script>
-
 <template>
   <div class="page">
     <section class="hero container">
@@ -18,10 +9,11 @@ const imgFailed = ref(false);
           <span class="tag-react">React</span> and
           <span class="tag-laravel">Laravel</span>.
         </h1>
-        <p class="section-lede hero-lede">{{ profile.summary }}</p>
+        <p class="section-lede hero-lede">{{ profileData.summary }}</p>
 
         <div class="hero-actions">
-          <router-link to="/projects" class="btn btn-primary">View projects</router-link>
+          <router-link to="/experience" class="btn btn-primary">Explore experience</router-link>
+          <a :href="profileData.resumeUrl" download class="btn btn-ghost">Download resume</a>
           <router-link to="/contact" class="btn btn-ghost">Get in touch</router-link>
         </div>
 
@@ -63,7 +55,16 @@ const imgFailed = ref(false);
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { ref } from "vue";
+import profile from "../assets/profile.jpg";
+import TechChip from "../components/TechChip.vue";
+import { featuredStack, profile as profileData } from "../data/resume.js";
+
+const imgFailed = ref(false);
+</script>
+
+<style scoped lang="scss">
 .hero {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
@@ -113,7 +114,6 @@ const imgFailed = ref(false);
   flex-wrap: wrap;
 }
 
-/* --- visual side: browser-window framed photo with floating chips --- */
 .hero-visual {
   position: relative;
   display: flex;
@@ -230,12 +230,42 @@ const imgFailed = ref(false);
     min-height: auto;
     gap: 64px;
   }
+
   .hero-visual {
     order: -1;
     padding: 20px 40px 60px;
   }
+
   .float {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    gap: 36px;
+  }
+
+  .hero-copy,
+  .hero-visual {
+    width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-visual {
+    padding: 8px 0 24px;
+  }
+
+  .browser-frame {
+    width: 100%;
+  }
+
+  .photo-fallback span {
+    font-size: 48px;
   }
 }
 </style>

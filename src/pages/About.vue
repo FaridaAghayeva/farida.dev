@@ -1,15 +1,9 @@
-<script setup>
-import { profile, featuredStack, skills, languages } from "../data/resume";
-import TechChip from "../components/TechChip.vue";
-</script>
-
 <template>
   <div class="page container">
     <span class="eyebrow">~/about</span>
     <h1 class="section-title">About me</h1>
     <p class="section-lede">{{ profile.summary }}</p>
 
-    <!-- Featured stack: the "eye-catching first" bit the toolbox used to bury -->
     <section class="featured">
       <p class="path featured-label">// what I build with, most</p>
       <div class="featured-row">
@@ -17,7 +11,6 @@ import TechChip from "../components/TechChip.vue";
       </div>
     </section>
 
-    <!-- Full skills, grouped -->
     <section class="skills-grid grid">
       <div v-for="(items, category) in skills" :key="category" class="card skill-card">
         <h3 class="skill-cat">{{ category }}</h3>
@@ -27,7 +20,6 @@ import TechChip from "../components/TechChip.vue";
       </div>
     </section>
 
-    <!-- Languages -->
     <section class="languages">
       <h3 class="skill-cat">Languages</h3>
       <div class="lang-row">
@@ -36,10 +28,37 @@ import TechChip from "../components/TechChip.vue";
         </span>
       </div>
     </section>
+
+    <section class="resume-card card">
+      <div class="resume-copy">
+        <p class="path">// resume</p>
+        <h3 class="skill-cat">Download my resume</h3>
+        <p class="section-lede">For a concise downloadable overview of my background, experience, and stack, you can save my latest resume here.</p>
+      </div>
+      <a :href="profile.resumeUrl" download class="btn btn-primary">Download CV</a>
+    </section>
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { profile, featuredStack, skills, languages } from "../data/resume.js";
+import TechChip from "../components/TechChip.vue";
+</script>
+
+<style scoped lang="scss">
+.resume-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 26px;
+  margin-top: 56px;
+}
+
+.resume-copy {
+  max-width: 700px;
+}
+
 .featured {
   margin-bottom: 56px;
 }
@@ -101,5 +120,31 @@ import TechChip from "../components/TechChip.vue";
 .lang-chip em {
   color: var(--muted-2);
   font-style: normal;
+}
+
+@media (max-width: 640px) {
+  .resume-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-card {
+    padding: 20px;
+  }
+
+  .skill-chips,
+  .lang-row,
+  .featured-row {
+    gap: 8px;
+  }
+
+  .lang-chip {
+    width: 100%;
+    text-align: center;
+  }
 }
 </style>

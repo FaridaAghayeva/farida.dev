@@ -1,20 +1,3 @@
-<script setup>
-import { ref } from "vue";
-import { profile } from "../data/resume";
-
-const name = ref("");
-const email = ref("");
-const message = ref("");
-const sent = ref(false);
-
-function submit() {
-  const subject = encodeURIComponent(`Portfolio contact from ${name.value || "a visitor"}`);
-  const body = encodeURIComponent(`${message.value}\n\n— ${name.value} (${email.value})`);
-  window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-  sent.value = true;
-}
-</script>
-
 <template>
   <div class="page container">
     <span class="eyebrow">~/contact</span>
@@ -76,7 +59,24 @@ function submit() {
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { ref } from "vue";
+import { profile } from "../data/resume";
+
+const name = ref("");
+const email = ref("");
+const message = ref("");
+const sent = ref(false);
+
+function submit() {
+  const subject = encodeURIComponent(`Portfolio contact from ${name.value || "a visitor"}`);
+  const body = encodeURIComponent(`${message.value}\n\n— ${name.value} (${email.value})`);
+  window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+  sent.value = true;
+}
+</script>
+
+<style scoped lang="scss">
 .contact-layout {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -152,6 +152,22 @@ textarea:focus {
 @media (max-width: 860px) {
   .contact-layout {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .details-card,
+  .form-card {
+    padding: 22px;
+  }
+
+  .details-title {
+    font-size: 17px;
+  }
+
+  input,
+  textarea {
+    font-size: 14px;
   }
 }
 </style>

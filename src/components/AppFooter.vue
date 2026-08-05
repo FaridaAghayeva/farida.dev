@@ -1,8 +1,3 @@
-<script setup>
-import { profile, socials } from "../data/resume";
-const year = new Date().getFullYear();
-</script>
-
 <template>
   <footer class="footer">
     <div class="container footer-inner">
@@ -23,10 +18,16 @@ const year = new Date().getFullYear();
   </footer>
 </template>
 
-<style scoped>
+<script setup>
+import { profile, socials } from "../data/resume";
+const year = new Date().getFullYear();
+</script>
+
+<style scoped lang="scss">
 .footer {
   border-top: 1px solid var(--line);
   background: var(--bg-alt);
+  margin-top: clamp(24px, 4vw, 48px);
   padding: 40px 0;
 }
 

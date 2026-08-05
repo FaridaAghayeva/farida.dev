@@ -1,17 +1,3 @@
-<script setup>
-import { experience } from "../data/resume";
-import TechChip from "../components/TechChip.vue";
-
-const techLabel = {
-  vue: "Vue.js",
-  react: "React",
-  laravel: "Laravel",
-  node: "Node / MERN",
-  mongo: "MongoDB",
-  ts: "TypeScript",
-};
-</script>
-
 <template>
   <div class="page container">
     <span class="eyebrow">~/experience</span>
@@ -30,6 +16,7 @@ const techLabel = {
             <div>
               <h3 class="entry-role">{{ job.role }}</h3>
               <p class="entry-company">{{ job.company }}</p>
+              <p class="entry-location path">{{ job.location }}</p>
             </div>
             <span class="entry-period path" :class="{ 'entry-period-current': job.current }">
               {{ job.period }}
@@ -49,7 +36,21 @@ const techLabel = {
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { experience } from "../data/resume";
+import TechChip from "../components/TechChip.vue";
+
+const techLabel = {
+  vue: "Vue.js",
+  react: "React",
+  laravel: "Laravel",
+  node: "Node / MERN",
+  mongo: "MongoDB",
+  ts: "TypeScript",
+};
+</script>
+
+<style scoped lang="scss">
 .timeline {
   position: relative;
   display: flex;
@@ -119,6 +120,11 @@ const techLabel = {
   font-size: 14.5px;
 }
 
+.entry-location {
+  margin-top: 4px;
+  font-size: 13px;
+}
+
 .entry-period {
   white-space: nowrap;
   color: var(--muted-2);
@@ -165,6 +171,23 @@ const techLabel = {
   .entry {
     grid-template-columns: 20px 1fr;
     gap: 14px;
+  }
+
+  .entry-card {
+    padding: 20px;
+  }
+
+  .entry-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .entry-period {
+    padding-top: 0;
+  }
+
+  .entry-points {
+    font-size: 14px;
   }
 }
 </style>

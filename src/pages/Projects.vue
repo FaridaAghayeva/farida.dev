@@ -1,17 +1,3 @@
-<script setup>
-import { projects } from "../data/resume";
-import TechChip from "../components/TechChip.vue";
-
-const techLabel = {
-  vue: "Vue.js",
-  react: "React",
-  laravel: "Laravel",
-  node: "Node.js",
-  mongo: "MongoDB",
-  ts: "TypeScript",
-};
-</script>
-
 <template>
   <div class="page container">
     <span class="eyebrow">~/projects</span>
@@ -34,7 +20,21 @@ const techLabel = {
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { projects } from "../data/resume";
+import TechChip from "../components/TechChip.vue";
+
+const techLabel = {
+  vue: "Vue.js",
+  react: "React",
+  laravel: "Laravel",
+  node: "Node.js",
+  mongo: "MongoDB",
+  ts: "TypeScript",
+};
+</script>
+
+<style scoped lang="scss">
 .proj-grid {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
@@ -46,6 +46,15 @@ const techLabel = {
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
+@media (max-width: 640px) {
+  .proj-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-card {
+    padding: 22px;
+  }
+}
 .proj-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-soft);

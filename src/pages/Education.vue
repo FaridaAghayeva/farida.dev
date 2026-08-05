@@ -1,7 +1,3 @@
-<script setup>
-import { education } from "../data/resume";
-</script>
-
 <template>
   <div class="page container">
     <span class="eyebrow">~/education</span>
@@ -22,7 +18,11 @@ import { education } from "../data/resume";
   </div>
 </template>
 
-<style scoped>
+<script setup>
+import { education } from "../data/resume";
+</script>
+
+<style scoped lang="scss">
 .edu-grid {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
@@ -70,5 +70,21 @@ import { education } from "../data/resume";
 .edu-note {
   font-size: 14.5px;
   color: var(--ink);
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .edu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edu-card {
+    padding: 22px;
+  }
+
+  .edu-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 </style>

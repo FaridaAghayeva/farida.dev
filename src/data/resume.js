@@ -1,5 +1,4 @@
-// Single source of truth for all resume content.
-// Edit this file to update the whole site.
+import cvPdf from "../assets/Farida_Aghayeva_CV.pdf";
 
 export const profile = {
   name: "Farida Aghayeva",
@@ -9,12 +8,11 @@ export const profile = {
   phone: "+36-20-441-00-22",
   linkedin: "https://www.linkedin.com/in/farida-aghayeva-553972248/",
   github: "https://github.com/FaridaAghayeva",
+  resumeUrl: cvPdf,
   summary:
-    "Full-stack developer building with Vue, React, Laravel and the MERN stack — focused on functionality, security and user experience. Currently a full-time Master's student in Computer Science at Óbuda University, deepening my knowledge of software engineering and system architecture, with the goal of building innovative solutions inside strong, collaborative teams.",
+    "Full-Stack Developer with 3+ years of experience building responsive, production-grade web applications using React, Vue.js, Next.js, Nuxt.js, Laravel, and the MERN stack. Proven ability to deliver cross-browser, API-integrated interfaces in Agile teams, with hands-on experience in Docker-based deployment, RESTful API design, and reusable component architecture. Currently pursuing an M.Sc. in Computer Science Engineering at Óbuda University, deepening expertise in software architecture and scalable system design. Seeking to apply strong front-end and back-end skills to build innovative, high-impact digital products.",
 };
 
-// The stack that should be instantly, visually recognizable — these drive
-// the floating chips on the homepage and the featured grid on /about.
 export const featuredStack = [
   { name: "Vue.js", key: "vue" },
   { name: "React.js", key: "react" },
@@ -28,38 +26,48 @@ export const skills = {
     { name: "Next.js", key: "react" },
     { name: "Vue.js", key: "vue" },
     { name: "Nuxt.js", key: "vue" },
+    { name: "Vue 3", key: "vue" },
+    { name: "Quasar", key: "vue" },
     { name: "Pinia", key: "vue" },
     { name: "Redux", key: "react" },
     { name: "TypeScript", key: "ts" },
-    { name: "JavaScript", key: "ts" },
+    { name: "JavaScript (ES6+)", key: "ts" },
     { name: "HTML5", key: "laravel" },
-    { name: "CSS3 / SCSS", key: "laravel" },
-    { name: "Tailwind", key: "vue" },
+    { name: "CSS3", key: "laravel" },
+    { name: "SCSS", key: "laravel" },
+    { name: "Tailwind CSS", key: "vue" },
+    { name: "Responsive Web Design", key: "react" },
   ],
   Backend: [
     { name: "Node.js", key: "node" },
     { name: "Express.js", key: "node" },
     { name: "PHP", key: "laravel" },
     { name: "Laravel", key: "laravel" },
+    { name: "RESTful API Design & Integration", key: "node" },
   ],
   Databases: [
     { name: "PostgreSQL", key: "ts" },
-    { name: "MongoDB", key: "mongo" },
     { name: "MySQL", key: "laravel" },
+    { name: "MongoDB", key: "mongo" },
     { name: "Supabase", key: "vue" },
     { name: "Firebase", key: "node" },
   ],
-  Tools: [
+  "Tools & DevOps": [
     { name: "Git", key: "ts" },
     { name: "GitHub", key: "ts" },
+    { name: "GitLab", key: "laravel" },
     { name: "Docker", key: "react" },
-    { name: "Postman", key: "laravel" },
     { name: "Vite", key: "vue" },
+    { name: "Postman", key: "laravel" },
     { name: "Linux", key: "node" },
+    { name: "CI/CD basics", key: "vue" },
   ],
   Practices: [
+    { name: "Agile/Scrum", key: "vue" },
     { name: "UI/UX Principles", key: "vue" },
-    { name: "Responsive Design", key: "react" },
+    { name: "Cross-Browser Compatibility", key: "react" },
+    { name: "Component-Based Architecture", key: "node" },
+    { name: "Performance Optimization", key: "react" },
     { name: "API Integration", key: "node" },
   ],
 };
@@ -68,6 +76,7 @@ export const experience = [
   {
     role: "Frontend Developer",
     company: "Irshi Co.",
+    location: "Remote",
     period: "Nov 2025 — Current",
     current: true,
     points: [
@@ -79,6 +88,7 @@ export const experience = [
   {
     role: "Frontend Developer",
     company: "AZAI TECH",
+    location: "Baku, Azerbaijan",
     period: "May 2025 — Aug 2025",
     points: [
       "Built responsive interfaces using Vue.js and integrated APIs.",
@@ -90,6 +100,7 @@ export const experience = [
   {
     role: "Junior Full-Stack Web Developer",
     company: "PRODATA",
+    location: "Baku, Azerbaijan",
     period: "Oct 2024 — May 2025",
     points: [
       "Developed full-stack apps using Laravel, Nuxt.js and Vue.js.",
@@ -102,6 +113,7 @@ export const experience = [
   {
     role: "Web Developer (Intern → Junior)",
     company: "ENGIN LTD",
+    location: "Baku, Azerbaijan",
     period: "Jul 2023 — Oct 2024",
     points: [
       "Built websites using React, the MERN stack and Laravel.",
@@ -124,16 +136,19 @@ export const education = [
     degree: "Bachelor of Science in Computer Science",
     school: "Khazar University",
     period: "Sep 2020 — Jun 2024",
+    note: "Built a strong foundation in algorithms, software engineering, web technologies, and problem-solving through academic study and practical coursework.",
   },
   {
     degree: "Frontend Development",
     school: "Matrix Academy",
     period: "Jan 2024 — Aug 2024",
+    note: "Focused on React.js, TypeScript, Supabase, and ecommerce website development with multilingual implementation, UI/UX fundamentals, and responsive frontend architecture.",
   },
   {
     degree: "Full-Stack Web Development",
     school: "Technest / IATC",
     period: "Dec 2022 — Jul 2023",
+    note: "Covered the MERN stack, full-stack web development workflows, and end-to-end application building across frontend, backend, and database layers.",
   },
 ];
 
@@ -154,7 +169,7 @@ export const awards = [
     title: "Pasha Hackathon Finalist",
     org: "Pasha Holding",
     year: "2025",
-    type: "award",
+    type: "scholarship",
   },
   {
     title: "Girls Code Scholarship",
@@ -173,12 +188,9 @@ export const awards = [
 export const languages = [
   { name: "English", note: "IELTS 7" },
   { name: "Azerbaijani", note: "Native" },
-  { name: "Turkish", note: "" },
-  { name: "German", note: "" },
-  { name: "Korean", note: "" },
+  { name: "Turkish", note: "" }
 ];
 
-// Placeholder projects — swap in real repos/case studies from her GitHub.
 export const projects = [
   {
     title: "Nuxt + Laravel Commerce Dashboard",
